@@ -56,7 +56,7 @@ namespace KafeTekno.UI
             this.dgwSiparisDetaylar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwSiparisDetaylar.Location = new System.Drawing.Point(12, 55);
             this.dgwSiparisDetaylar.Name = "dgwSiparisDetaylar";
-            this.dgwSiparisDetaylar.Size = new System.Drawing.Size(448, 382);
+            this.dgwSiparisDetaylar.Size = new System.Drawing.Size(415, 382);
             this.dgwSiparisDetaylar.TabIndex = 12;
             // 
             // label1
@@ -107,7 +107,7 @@ namespace KafeTekno.UI
             this.cboMasaNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cboMasaNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMasaNo.FormattingEnabled = true;
-            this.cboMasaNo.Location = new System.Drawing.Point(486, 27);
+            this.cboMasaNo.Location = new System.Drawing.Point(453, 27);
             this.cboMasaNo.Name = "cboMasaNo";
             this.cboMasaNo.Size = new System.Drawing.Size(121, 21);
             this.cboMasaNo.TabIndex = 5;
@@ -115,7 +115,7 @@ namespace KafeTekno.UI
             // btnTasi
             // 
             this.btnTasi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTasi.Location = new System.Drawing.Point(613, 25);
+            this.btnTasi.Location = new System.Drawing.Point(580, 25);
             this.btnTasi.Name = "btnTasi";
             this.btnTasi.Size = new System.Drawing.Size(103, 25);
             this.btnTasi.TabIndex = 6;
@@ -126,7 +126,7 @@ namespace KafeTekno.UI
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(486, 264);
+            this.label3.Location = new System.Drawing.Point(453, 264);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(230, 20);
             this.label3.TabIndex = 8;
@@ -139,7 +139,7 @@ namespace KafeTekno.UI
             this.btnSiparisIptal.BackColor = System.Drawing.Color.DarkRed;
             this.btnSiparisIptal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSiparisIptal.ForeColor = System.Drawing.Color.White;
-            this.btnSiparisIptal.Location = new System.Drawing.Point(486, 314);
+            this.btnSiparisIptal.Location = new System.Drawing.Point(453, 314);
             this.btnSiparisIptal.Name = "btnSiparisIptal";
             this.btnSiparisIptal.Size = new System.Drawing.Size(112, 62);
             this.btnSiparisIptal.TabIndex = 9;
@@ -152,7 +152,7 @@ namespace KafeTekno.UI
             this.btnOdemeAl.BackColor = System.Drawing.Color.Green;
             this.btnOdemeAl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnOdemeAl.ForeColor = System.Drawing.Color.White;
-            this.btnOdemeAl.Location = new System.Drawing.Point(604, 314);
+            this.btnOdemeAl.Location = new System.Drawing.Point(571, 314);
             this.btnOdemeAl.Name = "btnOdemeAl";
             this.btnOdemeAl.Size = new System.Drawing.Size(112, 62);
             this.btnOdemeAl.TabIndex = 10;
@@ -165,7 +165,7 @@ namespace KafeTekno.UI
             this.btnAnasayfa.BackColor = System.Drawing.Color.Gold;
             this.btnAnasayfa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnAnasayfa.ForeColor = System.Drawing.Color.Sienna;
-            this.btnAnasayfa.Location = new System.Drawing.Point(486, 382);
+            this.btnAnasayfa.Location = new System.Drawing.Point(453, 382);
             this.btnAnasayfa.Name = "btnAnasayfa";
             this.btnAnasayfa.Size = new System.Drawing.Size(230, 56);
             this.btnAnasayfa.TabIndex = 11;
@@ -178,7 +178,7 @@ namespace KafeTekno.UI
             this.lblMasaNo.BackColor = System.Drawing.Color.Tomato;
             this.lblMasaNo.Font = new System.Drawing.Font("Tahoma", 64F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblMasaNo.ForeColor = System.Drawing.Color.White;
-            this.lblMasaNo.Location = new System.Drawing.Point(483, 55);
+            this.lblMasaNo.Location = new System.Drawing.Point(450, 55);
             this.lblMasaNo.Name = "lblMasaNo";
             this.lblMasaNo.Size = new System.Drawing.Size(233, 190);
             this.lblMasaNo.TabIndex = 7;
@@ -189,7 +189,7 @@ namespace KafeTekno.UI
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(483, 9);
+            this.label5.Location = new System.Drawing.Point(450, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 13;
@@ -199,7 +199,7 @@ namespace KafeTekno.UI
             // 
             this.lblOdemeTutari.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblOdemeTutari.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblOdemeTutari.Location = new System.Drawing.Point(490, 284);
+            this.lblOdemeTutari.Location = new System.Drawing.Point(457, 284);
             this.lblOdemeTutari.Name = "lblOdemeTutari";
             this.lblOdemeTutari.Size = new System.Drawing.Size(226, 23);
             this.lblOdemeTutari.TabIndex = 14;
@@ -210,7 +210,7 @@ namespace KafeTekno.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 449);
+            this.ClientSize = new System.Drawing.Size(701, 449);
             this.Controls.Add(this.lblOdemeTutari);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblMasaNo);
@@ -226,6 +226,7 @@ namespace KafeTekno.UI
             this.Controls.Add(this.btnEkle);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgwSiparisDetaylar);
+            this.MinimumSize = new System.Drawing.Size(717, 488);
             this.Name = "SiparisForm";
             this.Text = "Masa 00";
             ((System.ComponentModel.ISupportInitialize)(this.dgwSiparisDetaylar)).EndInit();
