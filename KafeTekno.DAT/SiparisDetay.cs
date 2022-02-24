@@ -8,13 +8,7 @@ namespace KafeTekno.DATA
 {
     public class SiparisDetay
     {
-        public SiparisDetay(string urunAd, decimal birimFiyat, int adet, string tutarTL)
-        {
-            UrunAd = urunAd;
-            BirimFiyat = birimFiyat;
-            Adet = adet;
-            TutarTL = tutarTL;
-        }
+        
         public string UrunAd { get; set; }
         public decimal BirimFiyat { get; set; }
         public int Adet { get; set; }

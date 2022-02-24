@@ -107,7 +107,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\KafeTekno.DAT\KafeTekno.DATA.csproj">
+      <Project>{68c8330a-227c-40c1-ada8-102828920e6e}</Project>
+      <Name>KafeTekno.DATA</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bos.png" />
   </ItemGroup>

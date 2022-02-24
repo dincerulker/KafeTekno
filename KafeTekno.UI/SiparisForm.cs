@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KafeTekno.DATA;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,100 @@ namespace KafeTekno.UI
 {
     public partial class SiparisForm : Form
     {
-        public SiparisForm()
+        private readonly KafeVeri _db;
+        private readonly Siparis _siparis;
+        private readonly BindingList<SiparisDetay> _blSiparisDetaylar; // binding list oluşturduk
+
+        public SiparisForm(KafeVeri db, Siparis siparis)
         {
+            _db = db;
+            _siparis = siparis;
+            _blSiparisDetaylar = new BindingList<SiparisDetay>(_siparis.SiparisDetaylar); // siparis detaylarına da ekleyecek otomatik.
             InitializeComponent();
+            cboUrun.DataSource = _db.Urunler;
+            dgwSiparisDetaylar.DataSource = _blSiparisDetaylar; // dataGridViev e ürünlerin detaylarını oluşturduk.
+            _blSiparisDetaylar.ListChanged += _blSiparisDetaylar_ListChanged; // bindinglist in özelliği,liste değiştiğinde oto güncellenecek,
+                                                                              // bunu eklemesek ürün eklendiğinde fiyat güncellenmeyecekti.
+            MasaNoGuncelle();
+            OdemeTutariGuncelle();
+        }
+
+        private void _blSiparisDetaylar_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            OdemeTutariGuncelle();
+        }
+
+        private void OdemeTutariGuncelle()
+        {
+            lblOdemeTutari.Text = _siparis.ToplamTutarTL;
+        }
+
+        private void MasaNoGuncelle()
+        {
+            Text = $"Masa {_siparis.MasaNo:00} (Açılış Zamanı {_siparis.AcilisZamani}";
+            lblMasaNo.Text = _siparis.MasaNo.ToString();
+
+        }
+
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            if (cboUrun.SelectedIndex == -1)
+            {
+                return;
+            }
+            Urun urun = (Urun)cboUrun.SelectedItem;
+            SiparisDetay sd = new SiparisDetay() 
+            {
+                UrunAd = urun.UrunAd,
+                BirimFiyat = urun.BirimFiyat,
+                Adet = (int)nudAdet.Value 
+            };
+            _blSiparisDetaylar.Add(sd);
+            EkleFormunuSifirla();
+        }
+
+        private void EkleFormunuSifirla()
+        {
+            cboUrun.SelectedIndex = 0;
+            nudAdet.Value = 1;
+        }
+
+        private void dgwSiparisDetaylar_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            DialogResult dr = MessageBox.Show(
+                text: "Silmek istediğinize emin misiniz?",
+                caption: "Detay silme Onayı",
+                buttons: MessageBoxButtons.YesNo,
+                icon: MessageBoxIcon.Question,
+                defaultButton: MessageBoxDefaultButton.Button2
+                );// parantez içi seçeneklerden 9. yapıldı
+
+
+            e.Cancel = dr == DialogResult.No; // cevap No ise silmeyi kapat.
+        }
+
+        private void btnAnasayfa_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnOdemeAl_Click(object sender, EventArgs e)
+        {
+            MasayiKapat(SiparisDurum.Odendi, _siparis.ToplamTutar());
+        }
+
+        private void btnSiparisIptal_Click(object sender, EventArgs e)
+        {
+            MasayiKapat(SiparisDurum.Iptal);
+        }
+        private void MasayiKapat(SiparisDurum durum,decimal odenenTutar = 0)
+        {
+            _siparis.Durum = durum;
+            _siparis.KapanisZamani = DateTime.Now;
+            _siparis.OdenenTutar = odenenTutar;
+            _db.AktifSiparisler.Remove(_siparis);
+            _db.GecmisSiparisler.Add(_siparis);
+            Close();
         }
     }
 }
