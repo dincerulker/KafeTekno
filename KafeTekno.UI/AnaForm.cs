@@ -62,11 +62,38 @@ namespace KafeTekno.UI
             int masaNo = (int)lvi.Tag; // object ten int e unboxing yaptık
             lvi.ImageKey = "dolu";
             Siparis siparis = SiparisBulYaDaOlustur(masaNo);
-            new SiparisForm(db,siparis).ShowDialog(); // sipariş formunu açar // constructordan gelen ilk değerleri giriyoruz (db,siparis)
-            MessageBox.Show("Bu yazı geldiğinde sipariş formu sonlanmıştır.");
+            SiparisForm sf = new SiparisForm(db, siparis);
+            sf.MasaTasindi += Sf_MasaTasindi;
+            sf.ShowDialog();
+            // sipariş formunu açar // constructordan gelen ilk değerleri giriyoruz (db,siparis)
+            
             if (siparis.Durum != SiparisDurum.Aktif)
             {
                 lvi.ImageKey = "bos";
+            }
+        }
+
+        private void Sf_MasaTasindi(object sender, MasaTasindiEventArgs e)
+        {
+            MasaTasi(e.EskiMasaNo, e.YeniMasaNo);
+        }
+
+        private void MasaTasi(int eskiMasaNo, int yeniMasaNo)
+        {
+            foreach (ListViewItem lvi in lvwMasalar.Items)
+            {
+                int masaNo = (int)lvi.Tag;
+                if (masaNo == eskiMasaNo)
+                {
+                    lvi.ImageKey = "bos";
+                    lvi.Selected = false;
+                }
+                else if (masaNo == yeniMasaNo)
+                {
+                    lvi.ImageKey = "dolu";
+                    lvi.Selected = true;
+                }
+
             }
         }
 

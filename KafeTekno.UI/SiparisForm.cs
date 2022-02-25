@@ -13,6 +13,8 @@ namespace KafeTekno.UI
 {
     public partial class SiparisForm : Form
     {
+        public event EventHandler<MasaTasindiEventArgs> MasaTasindi;
+
         private readonly KafeVeri _db;
         private readonly Siparis _siparis;
         private readonly BindingList<SiparisDetay> _blSiparisDetaylar; // binding list oluşturduk
@@ -46,13 +48,20 @@ namespace KafeTekno.UI
             Text = $"Masa {_siparis.MasaNo:00} (Açılış Zamanı {_siparis.AcilisZamani}";
             lblMasaNo.Text = _siparis.MasaNo.ToString();
 
-            cboMasaNo.Items.Clear();
-            for (int i = 1; i <= _db.MasaAdet; i++)
-            {
-                if (!_db.AktifSiparisler.Any(x => x.MasaNo == i))              
             
-                cboMasaNo.Items.Add(i);
-            }
+            cboMasaNo.DataSource = Enumerable
+                .Range(1, _db.MasaAdet) // masa taşı'daki yeri 1den 20 ye doldurduk
+                .Where(x => !_db.AktifSiparisler.Any(s => s.MasaNo == x)) // dolu olan masaları göstermedik
+                .ToList(); // listeledik 
+
+            // For metdou ile aşağıdaki gibi olacak
+            //cboMasaNo.Items.Clear();
+            //for (int i = 1; i <= _db.MasaAdet; i++)
+            //{
+            //    if (!_db.AktifSiparisler.Any(x => x.MasaNo == i))              
+            
+            //    cboMasaNo.Items.Add(i);
+            //}
 
         }
 
@@ -115,6 +124,19 @@ namespace KafeTekno.UI
             _db.AktifSiparisler.Remove(_siparis);
             _db.GecmisSiparisler.Add(_siparis);
             Close();
+        }
+
+        private void btnTasi_Click(object sender, EventArgs e)
+        {
+            if (cboMasaNo.SelectedItem == null) return;
+            int eski = _siparis.MasaNo;
+            int yeni = (int)cboMasaNo.SelectedItem;
+            _siparis.MasaNo = yeni;
+            MasaNoGuncelle();
+            if (MasaTasindi != null)
+            {
+                MasaTasindi(this, new MasaTasindiEventArgs(eski, yeni));
+            }
         }
     }
 }

@@ -140,6 +140,7 @@ namespace KafeTekno.UI
             this.btnTasi.TabIndex = 6;
             this.btnTasi.Text = "TAŞI";
             this.btnTasi.UseVisualStyleBackColor = true;
+            this.btnTasi.Click += new System.EventHandler(this.btnTasi_Click);
             // 
             // label3
             // 
