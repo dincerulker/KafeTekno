@@ -1,10 +1,12 @@
 ﻿using KafeTekno.DATA;
 using KafeTekno.UI.Properties;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,15 +16,17 @@ namespace KafeTekno.UI
 {
     public partial class AnaForm : Form
     {
-        KafeVeri db = new KafeVeri();
+        KafeVeri db;
         public AnaForm()
         {
-            InitializeComponent();            
-            OrnekUrunleriYukle();
+            VerileriOku();
+            InitializeComponent();
             MasalariOlustur();
 
 
         }
+
+
 
         private void MasalariOlustur()
         {
@@ -31,7 +35,7 @@ namespace KafeTekno.UI
             for (int i = 1; i <= db.MasaAdet; i++) // masaları ekledik
             {
                 ListViewItem lvi = new ListViewItem(i.ToString("00"));
-                lvi.ImageKey = "bos";
+                lvi.ImageKey = db.AktifSiparisler.Any(x => x.MasaNo == i) ? "dolu" : "bos";
                 lvi.Tag = i; // tagine seçilen masayı koymak için masa numarasını koyduk,
                              // lvwMasalar_doubleclick te int e dönüştürüp masa numarasını aldık
                 lvwMasalar.Items.Add(lvi);
@@ -66,7 +70,7 @@ namespace KafeTekno.UI
             sf.MasaTasindi += Sf_MasaTasindi;
             sf.ShowDialog();
             // sipariş formunu açar // constructordan gelen ilk değerleri giriyoruz (db,siparis)
-            
+
             if (siparis.Durum != SiparisDurum.Aktif)
             {
                 lvi.ImageKey = "bos";
@@ -118,6 +122,31 @@ namespace KafeTekno.UI
         private void tsmiUrunler_Click(object sender, EventArgs e)
         {
             new UrunlerForm(db).ShowDialog();
+        }
+        private void AnaForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            VerileriKaydet();
+        }
+        private void VerileriOku()
+        {
+            try
+            {
+                string json = File.ReadAllText("veri.json");
+                db = JsonConvert.DeserializeObject<KafeVeri>(json);
+            }
+            catch (Exception)
+            {
+                db = new KafeVeri();
+                OrnekUrunleriYukle();
+            }
+
+        }
+
+
+        private void VerileriKaydet()
+        {
+            string json = JsonConvert.SerializeObject(db);
+            File.WriteAllText("veri.json", json);
         }
     }
 }
