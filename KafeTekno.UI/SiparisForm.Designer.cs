@@ -250,6 +250,7 @@ namespace KafeTekno.UI
             this.Controls.Add(this.dgwSiparisDetaylar);
             this.MinimumSize = new System.Drawing.Size(717, 488);
             this.Name = "SiparisForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Masa 00";
             ((System.ComponentModel.ISupportInitialize)(this.dgwSiparisDetaylar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAdet)).EndInit();

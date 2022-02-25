@@ -46,6 +46,14 @@ namespace KafeTekno.UI
             Text = $"Masa {_siparis.MasaNo:00} (Açılış Zamanı {_siparis.AcilisZamani}";
             lblMasaNo.Text = _siparis.MasaNo.ToString();
 
+            cboMasaNo.Items.Clear();
+            for (int i = 1; i <= _db.MasaAdet; i++)
+            {
+                if (!_db.AktifSiparisler.Any(x => x.MasaNo == i))              
+            
+                cboMasaNo.Items.Add(i);
+            }
+
         }
 
         private void btnEkle_Click(object sender, EventArgs e)

@@ -52,6 +52,7 @@ namespace KafeTekno.UI
             this.tsmiUrunler.Name = "tsmiUrunler";
             this.tsmiUrunler.Size = new System.Drawing.Size(58, 20);
             this.tsmiUrunler.Text = "Ürünler";
+            this.tsmiUrunler.Click += new System.EventHandler(this.tsmiUrunler_Click);
             // 
             // tsmiGecmisSiparisler
             // 
@@ -79,6 +80,7 @@ namespace KafeTekno.UI
             this.Controls.Add(this.lvwMasalar);
             this.Controls.Add(this.menuStrip1);
             this.Name = "AnaForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KafeTekno";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

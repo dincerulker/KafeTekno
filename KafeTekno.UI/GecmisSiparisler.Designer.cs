@@ -126,7 +126,7 @@ namespace KafeTekno.UI
             this.dgwSiparisDetaylar.ReadOnly = true;
             this.dgwSiparisDetaylar.RowHeadersVisible = false;
             this.dgwSiparisDetaylar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgwSiparisDetaylar.Size = new System.Drawing.Size(712, 185);
+            this.dgwSiparisDetaylar.Size = new System.Drawing.Size(712, 184);
             this.dgwSiparisDetaylar.TabIndex = 1;
             this.dgwSiparisDetaylar.SelectionChanged += new System.EventHandler(this.dgwSiparisDetaylar_SelectionChanged);
             // 
@@ -149,6 +149,7 @@ namespace KafeTekno.UI
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GecmisSiparisler";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "GecmisSiparisler";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
